@@ -19,6 +19,9 @@ const AllSongs = () => {
               <p className="song-artist">{song.artist}</p>
               <span className="song-duration">{song.duration}</span>
             </div>
+            <div className="play-button">
+              {currentTrackIndex === key ? "♪" : "▶"}
+            </div>
           </div>
         ))}
       </div>
