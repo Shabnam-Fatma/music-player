@@ -2,7 +2,8 @@ import React from "react";
 import { useMusic } from "../hooks/useMusic";
 
 const AllSongs = () => {
-  const { allSongs, handlePlaySong, currentTrackIndex, currentTrack } = useMusic();
+  const { allSongs, handlePlaySong, currentTrackIndex, currentTrack } =
+    useMusic();
   return (
     <div className="all-songs">
       <h2>All Songs ({allSongs.length})</h2>
@@ -10,7 +11,7 @@ const AllSongs = () => {
         {allSongs.map((song, key) => (
           <div
             key={key}
-            className= {`song-card ${currentTrackIndex === key ? "active" : ""}`}
+            className={`song-card ${currentTrackIndex === key ? "active" : ""}`}
             onClick={() => handlePlaySong(song, key)}
           >
             <div className="song-info">
