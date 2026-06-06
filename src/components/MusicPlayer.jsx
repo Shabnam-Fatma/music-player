@@ -2,7 +2,7 @@ import React from "react";
 import { useMusic } from "../hooks/useMusic";
 
 const MusicPlayer = () => {
-  const { currentTrack, formatTime, currentTime } = useMusic();
+  const { currentTrack, formatTime, currentTime, duration } = useMusic();
   return (
     <div className="music-player">
       <audio />
@@ -12,6 +12,7 @@ const MusicPlayer = () => {
       </div>
       <div className="progress-container">
         <span className="time">{formatTime(currentTime)}</span>
+        <span className="time">{formatTime(duration)}</span>
       </div>
     </div>
   );
