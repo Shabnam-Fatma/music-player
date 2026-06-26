@@ -1,9 +1,35 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useMusic } from "../hooks/useMusic";
 
 const MusicPlayer = () => {
-  const { currentTrack, formatTime, currentTime, duration } = useMusic();
-  const audioRef = useRef(null)
+  const { currentTrack, formatTime, currentTime, duration, setDuration } = useMusic();
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration)
+      console.log(audio.duration);
+      
+    }
+
+    const handleTimeUpdate = () => {
+      
+    }
+
+    const handleEnded = () => {
+      
+    }
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata)
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
+    }
+  }, []);
+
   return (
     <div className="music-player">
       <audio ref={audioRef} preload="metadata" crossOrigin="anonymous" />
