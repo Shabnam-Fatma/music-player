@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useMusic } from "../hooks/useMusic";
 
 const MusicPlayer = () => {
-  const { currentTrack, formatTime, currentTime, duration, setDuration } = useMusic();
+  const { currentTrack, formatTime, currentTime, setCurrentTime, duration, setDuration } = useMusic();
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -28,11 +28,11 @@ const MusicPlayer = () => {
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
     }
-  }, []);
+  }, [setDuration, setCurrentTime, currentTrack]);
 
   return (
     <div className="music-player">
-      <audio ref={audioRef} preload="metadata" crossOrigin="anonymous" />
+      <audio ref={audioRef} src={currentTrack.url} preload="metadata" crossOrigin="anonymous" />
       <div className="track-info">
         <h3 className="track-title">{currentTrack.title}</h3>
         <p className="track-artist">{currentTrack.artist}</p>
